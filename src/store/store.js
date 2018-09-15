@@ -27,15 +27,15 @@ const store = new Vuex.Store({
   },
   async deletePost ({ state, dispatch, commit }, post) {
     await Api().delete(`posts/${post._id}`)
-    return dispatch('loadPostList', { commit }) // dispara a action
+    return dispatch('loadPostsList', { commit }) // dispara a action
   },
   mutations: {
     SET_POSTS_LIST: (state, { list }) => {
-      state.posts = list
+      state.posts = list.data
     }
   },
   getters: {
-    getPostList: state => state.post
+    getPostsList: state => state.posts
   }
 })
 

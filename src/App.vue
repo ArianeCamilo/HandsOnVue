@@ -6,8 +6,19 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
-  name: 'App'
+  name: 'App',
+  computed: mapState([
+    'posts'
+  ]),
+
+  beforeMount () {
+    const dispatch = this.$store.dispatch
+    dispatch('loadPostsList')
+    console.log(this.$store.state.posts)
+  }
 }
 </script>
 
